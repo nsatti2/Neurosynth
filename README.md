@@ -45,21 +45,6 @@ streamlit run app/main.py
 4. Ask questions in the "Ask papers" tab
 5. Use "Extract methods" to pull structured methodology from any paper
 
-## Project structure
-
-neurosynth/
-├── app/
-│   └── main.py          # Streamlit frontend
-├── src/
-│   ├── pdf_parser.py    # PDF text extraction + chunking
-│   ├── vector_store.py  # ChromaDB embeddings + retrieval
-│   └── rag_pipeline.py  # LLM answer generation + methodology extraction
-├── data/
-│   ├── uploads/         # Temporary PDF storage
-│   └── chroma_db/       # Persisted vector database
-├── notebooks/           # Experiments and analysis
-├── requirements.txt
-└── README.md
 
 ## Roadmap
 
