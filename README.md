@@ -9,6 +9,10 @@ A research intelligence tool for neuroscience literature. Built out of frustrati
 - Auto-extract methodology (study design, sample size, brain regions, stats)
 - Filter questions to specific papers
 
+<img width="2994" height="1851" alt="image" src="https://github.com/user-attachments/assets/6c4b6de9-c56b-48b1-a751-bb419151a16e" />
+
+
+
 ## Tech stack
 - **LLM**: Llama 3.3 70B via Groq
 - **Embeddings**: sentence-transformers (all-MiniLM-L6-v2)
@@ -36,14 +40,6 @@ echo "GROQ_API_KEY=your_key_here" > .env
 # 5. Run the app
 streamlit run app/main.py
 ```
-
-## Usage
-
-1. Add your Groq API key to a `.env` file in the project root: `GROQ_API_KEY=your_key_here` (get one free at console.groq.com)
-2. Upload PDFs using the sidebar uploader
-3. Click "Index" for each paper — this parses and embeds the text
-4. Ask questions in the "Ask papers" tab
-5. Use "Extract methods" to pull structured methodology from any paper
 
 ## Usage
 
