@@ -45,6 +45,16 @@ streamlit run app/main.py
 4. Ask questions in the "Ask papers" tab
 5. Use "Extract methods" to pull structured methodology from any paper
 
+## Usage
+
+1. Add your Groq API key to a `.env` file in the project root: `GROQ_API_KEY=your_key_here` (get one free at console.groq.com)
+2. Upload PDFs using the sidebar uploader
+3. Click "Index" for each paper — this parses and embeds the text
+4. Ask questions in the "Ask papers" tab
+5. Use "Extract methods" to pull structured methodology from any paper
+
+> **Note:** Indexed papers persist across sessions via ChromaDB — you only need to index a paper once. If you change chunking settings in `pdf_parser.py`, delete `data/chroma_db/` and re-index.
+
 
 ## Roadmap
 

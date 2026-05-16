@@ -142,7 +142,7 @@ with st.sidebar:
                     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
                         tmp.write(uploaded_file.read())
                         tmp_path = tmp.name
-                    chunks = parse_paper(tmp_path, paper_id=paper_id)
+                    chunks = parse_paper(tmp_path, paper_id=paper_id, original_name=uploaded_file.name)
                     add_chunks(chunks)
                     os.unlink(tmp_path)
                 st.success(f"Indexed {len(chunks)} chunks")

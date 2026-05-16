@@ -105,7 +105,7 @@ def _split_into_sections(text: str) -> dict[str, str]:
     return sections
 
 
-def chunk_text(text: str, chunk_size: int = 500, overlap: int = 50) -> list[str]:
+def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50) -> list[str]:
     """Split text into overlapping chunks by word count."""
     words = text.split()
     chunks = []
@@ -120,7 +120,7 @@ def chunk_text(text: str, chunk_size: int = 500, overlap: int = 50) -> list[str]
     return chunks
 
 
-def parse_paper(pdf_path: str, paper_id: str) -> list[dict]:
+def parse_paper(pdf_path: str, paper_id: str, original_name: str = None) -> list[dict]:
     """
     Full pipeline: parse PDF -> split sections -> chunk each section.
     Returns a list of chunk dicts ready for embedding.
@@ -137,7 +137,7 @@ def parse_paper(pdf_path: str, paper_id: str) -> list[dict]:
                 "section": section_name,
                 "chunk_index": i,
                 "text": chunk,
-                "source": Path(pdf_path).name,
+                "source": original_name or Path(pdf_path).name,
             })
 
     return chunks

@@ -16,19 +16,21 @@ You answer questions strictly based on the provided paper excerpts.
 
 RULES:
 1. Only use information from the provided excerpts — never add outside knowledge
-2. After every claim, cite the source using [Author Year · section] format
-3. If the excerpts don't contain enough information, say so clearly
+2. After every claim, cite the source using the filename shown in the excerpt header
+3. Synthesize confidently from what is available — do not say the information is missing unless the excerpts are truly irrelevant. For questions about the main argument or research question, synthesize from introduction and abstract chunks directly.
 4. Be precise about brain regions, statistical methods, and study designs
 5. When papers conflict, note the contradiction explicitly
 
-Your tone is academic but clear. Avoid jargon unless it appears in the source material."""
+Your tone is academic but clear. Avoid jargon unless it appears in the source material.
+When asked for the main argument or thesis, synthesize directly and confidently from the abstract and introduction chunks.
+"""
 
 
 def format_context(chunks: list[dict]) -> str:
     """Format retrieved chunks into a numbered context block for the LLM."""
     context_parts = []
     for i, chunk in enumerate(chunks):
-        source_label = f"{chunk['paper_id']} ({chunk['section']})"
+        source_label = f"{chunk['source'].replace('.pdf', '')} · {chunk['section']}"
         context_parts.append(
             f"[Excerpt {i+1} — {source_label}]\n{chunk['text']}"
         )
@@ -39,7 +41,7 @@ def answer_question(
     question: str,
     history: list[dict] | None = None,  
     paper_ids: list[str] | None = None,
-    n_chunks: int = 5,
+    n_chunks: int = 8,
     model: str = "llama-3.3-70b-versatile",
 ) -> dict:
     """
